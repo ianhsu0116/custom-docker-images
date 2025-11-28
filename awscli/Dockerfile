@@ -1,4 +1,6 @@
-FROM public.ecr.aws/aws-cli/aws-cli:2.31.39
+ARG AWSCLI_VER
+
+FROM public.ecr.aws/aws-cli/aws-cli:${AWSCLI_VER}
 
 USER root
 

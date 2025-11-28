@@ -1,4 +1,6 @@
-FROM public.ecr.aws/aws-cli/aws-cli:2.31.39
+ARG AWSCLI_VER
+
+FROM public.ecr.aws/aws-cli/aws-cli:${AWSCLI_VER}
 
 USER root
 
@@ -10,7 +12,9 @@ RUN yum update -y && \
         xz && \
     yum clean all
 
-RUN curl -fsSL https://rpm.nodesource.com/setup_20.x | bash - && \
+ARG NODE_MAJOR
+
+RUN curl -fsSL https://rpm.nodesource.com/setup_${NODE_MAJOR}.x | bash - && \
     yum install -y nodejs && \
     yum clean all
 
